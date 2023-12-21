@@ -6,11 +6,14 @@ export default function () {
   const id = useParams();
 
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+  const [count, setCount] = useState(0);
 
   const handleVote = () => {
     setIsButtonDisabled(true);
   };
   const handleNext = () => {
+    setCount(() => setCount(count + 1));
+    setIsButtonDisabled(false);
     console.log("lets next");
   };
 
@@ -24,7 +27,7 @@ export default function () {
             <h3>Section: {users[0].section}</h3>
           </div>
           <h2 className="text-white text-xl font-bold text-center">
-            Please Select Your Candidate
+            Please Select Your Candidate {count}
           </h2>
 
           <div>
