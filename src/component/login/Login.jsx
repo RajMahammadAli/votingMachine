@@ -5,8 +5,6 @@ import { users } from "../../constant";
 export default function () {
   const navigate = useNavigate();
 
-  console.log(users[0].id);
-
   const [userMobileNumber, setUserMobileNumber] = useState("");
   const [userSerialNumber, setUserSerialNumber] = useState("");
 
@@ -20,11 +18,13 @@ export default function () {
     e.preventDefault();
     console.log(userMobileNumber);
     console.log(userSerialNumber);
+    const dbUser = users.find((user) => user.mobile === userMobileNumber);
+    console.log(dbUser);
     if (
-      users[0].mobile === userMobileNumber &&
-      users[0].serialNumber === userSerialNumber
+      dbUser?.mobile === userMobileNumber &&
+      dbUser?.serialNumber === userSerialNumber
     ) {
-      navigate(`/balotPaper/${users[0].id}`);
+      navigate(`/balotPaper/${dbUser?.id}`);
     } else {
       alert("Please input correct number");
     }

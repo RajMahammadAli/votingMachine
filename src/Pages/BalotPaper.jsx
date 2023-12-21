@@ -4,6 +4,8 @@ import { useState } from "react";
 
 export default function () {
   const id = useParams();
+  const newId = parseFloat(id.id);
+  console.log(newId);
 
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
   const [count, setCount] = useState(0);
@@ -22,9 +24,9 @@ export default function () {
       <div className="w-full h-full flex justify-center items-center">
         <div>
           <div>
-            <h3>Name: {users[0].name}</h3>
-            <h3>Designation: {users[0].designation}</h3>
-            <h3>Section: {users[0].section}</h3>
+            <h3>Name: {users[parseFloat(newId) - 1]?.name}</h3>
+            <h3>Designation: {users[parseFloat(newId) - 1]?.designation}</h3>
+            <h3>Section: {users[parseFloat(newId) - 1]?.section}</h3>
           </div>
           <h2 className="text-white text-xl font-bold text-center">
             Please Select Your Candidate {count}
